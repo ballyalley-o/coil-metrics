@@ -2,6 +2,20 @@ import csv
 
 def scrape_operations(csv_file):
     # TODO: Implement the logic to scrape operations from the CSV file
+
+
+    with open(csv_file, "r") as file:
+        reader = csv.reader(file)
+
+        next(reader)
+
+        for row in reader:
+            date = row[0]
+            meter = row[1]
+            operation = row[2]
+            amount = row[3]
+
+
     pass
 
 def compute_totals(operations):
