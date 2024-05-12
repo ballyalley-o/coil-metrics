@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['test.py'],
+    ['coil_metrics_app.py'],
     pathex=[],
     binaries=[],
     datas=[],
