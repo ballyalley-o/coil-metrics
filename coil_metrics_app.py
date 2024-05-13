@@ -2,7 +2,7 @@ import csv
 import math
 import tkinter as tk
 from tkinter import filedialog
-from colorama import Fore, Style
+
 
 
 def calculate_operation_counts():
@@ -24,11 +24,11 @@ def calculate_operation_counts():
     operation_counts = {}
 
     text.insert(tk.END, '\n')
-    text.insert(tk.END, f'HOWICK Ltd.')
-    text.insert(tk.END, ' CSV Coil Metrics \n', 'orange')
-    text.insert(tk.END, f'File: {csvfile}\n', 'gray')
+    text.insert(tk.END, f'HOWICK Ltd.', 'bold_title')
+    text.insert(tk.END, ' CSV Metrics \n', 'gray')
+    # text.insert(tk.END, f'File: {csvfile.split("/")[-1]}\n', 'gray')
     text.insert(tk.END, '\n')
-    text.insert(tk.END, f'Operations: \n', 'bold_yellow')
+    text.insert(tk.END, f'Operations: \n', 'bold_default')
 
     with open(csvfile, 'r') as file:
         reader = csv.reader(file)
@@ -43,7 +43,7 @@ def calculate_operation_counts():
 
     for operation, count in operation_counts.items():
         text.insert(tk.END, f'{operation}: ')
-        text.insert(tk.END, f'{count}\n', 'yellow')
+        text.insert(tk.END, f'{count}\n', 'bold_default')
 
     # scrape coil metrics
     total_meterage = 0
@@ -74,16 +74,16 @@ def calculate_operation_counts():
 
     text.insert(tk.END, '\n')
     text.insert(tk.END, 'Total Components: ', 'gray')
-    text.insert(tk.END, f'{components}\n', 'yellow')
+    text.insert(tk.END, f'{components}\n', 'bold_default')
     text.insert(tk.END, 'Total Meterage: ', 'gray')
-    text.insert(tk.END, f'{rounded_meterage}\n','yellow')
+    text.insert(tk.END, f'{rounded_meterage}\n','bold_default')
     text.insert(tk.END, '\n')
     text.insert(tk.END, f'Profile: ', 'gray')
-    text.insert(tk.END, f'{profile}\n', 'yellow')
+    text.insert(tk.END, f'{profile}\n', 'bold_default')
     text.insert(tk.END, f'Coil Thickness: ', 'gray')
-    text.insert(tk.END, f'{coil_thickness}\n', 'yellow')
+    text.insert(tk.END, f'{coil_thickness}\n', 'bold_default')
     text.insert(tk.END, f'Frameset: ', 'gray')
-    text.insert(tk.END, f'{frameset}\n', 'yellow')
+    text.insert(tk.END, f'{frameset}\n', 'bold_default')
 
     text.tag_config('blue', foreground='blue')
     text.tag_config('red', foreground='red')
@@ -96,10 +96,13 @@ def calculate_operation_counts():
     text.tag_config('pink', foreground='pink')
     text.tag_config('bold', font='Helvetica 12 bold')
     text.tag_config('bold_yellow', foreground='yellow', font=('Helvetica', '12', 'bold'))
+    text.tag_config('bold_default', foreground='black', font=('Helvetica', '10', 'bold'))
+    text.tag_config('bold_title', foreground='blue', font=('Helvetica', '10', 'bold'))
+
 
 
 root = tk.Tk()
-root.title("Coil Metrics")
+root.title("CSV Metrics")
 
 text = tk.Text(root)
 text.pack()
